@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hoteles Ferré Cusco — Corazón del Valle Sagrado</title>
+<meta name="description" content="Hotel boutique 5 estrellas en el corazón de Cusco. A pasos de la Plaza de Armas, puerta al Valle Sagrado y Machu Picchu. Reserva directo al mejor precio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   DESIGN TOKENS — idénticos a homepage
+═══════════════════════════════════════════════════════════ */
+:root {
+  --onix:        #141414;
+  --onix-700:    #2A2A2A;
+  --onix-500:    #4A4A4A;
+  --onix-300:    #8A8A8A;
+  --beige:       #EFE7D5;
+  --beige-100:   #FAF6EC;
+  --beige-200:   #F5EDE0;
+  --beige-300:   #DDD3BD;
+  --beige-400:   #C4B89C;
+  --success:     #4F6A4A;
+  --success-bg:  #EAF3DE;
+  --warning:     #B5894A;
+  --warning-bg:  #FDF3E3;
+  --error:       #8A3A30;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-ui:      'Montserrat', system-ui, sans-serif;
+
+  --space-1: 0.25rem;  --space-2: 0.5rem;   --space-3: 0.75rem;
+  --space-4: 1rem;     --space-5: 1.5rem;   --space-6: 2rem;
+  --space-7: 3rem;     --space-8: 4rem;     --space-9: 6rem;
+  --space-10: 8rem;
+
+  --radius-sm: 4px;   --radius-md: 8px;
+  --radius-lg: 14px;  --radius-xl: 24px;
+
+  --shadow-sm: 0 1px 3px rgba(20,20,20,0.06);
+  --shadow-md: 0 4px 16px rgba(20,20,20,0.08);
+  --shadow-lg: 0 12px 40px rgba(20,20,20,0.12);
+  --shadow-xl: 0 24px 64px rgba(20,20,20,0.16);
+
+  --nav-h: 72px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--font-ui); background: var(--beige-100); color: var(--onix); line-height: 1.6; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: var(--font-ui); }
+
+/* ─── Utilidades ─── */
+.container { max-width: 1240px; margin: 0 auto; padding: 0 var(--space-6); }
+@media (max-width: 768px) { .container { padding: 0 var(--space-4); } }
+
+.eyebrow {
+  font-family: var(--font-ui); font-size: 0.625rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--onix-300);
+}
+.eyebrow--light { color: var(--beige-400); }
+
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; } .reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ═══════════════════════════════════════════════════════════
+   NAV — idéntico al homepage
+═══════════════════════════════════════════════════════════ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h); display: flex; align-items: center;
+  background: var(--onix);
+  box-shadow: 0 2px 20px rgba(20,20,20,0.15);
+  transition: background var(--ease-out), box-shadow var(--ease-out);
+}
+.nav__inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+.nav__logo { display: flex; align-items: center; gap: 10px; }
+.nav__logo-mark { width: 28px; height: 34px; flex-shrink: 0; }
+.nav__logo-text {
+  font-family: var(--font-ui); font-size: 0.5625rem; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--beige); line-height: 1.3;
+}
+.nav__links { display: flex; align-items: center; gap: var(--space-7); list-style: none; }
+@media (max-width: 900px) { .nav__links { display: none; } }
+.nav__link {
+  font-size: 0.5625rem; font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--beige-300);
+  transition: color var(--ease-out);
+}
+.nav__link:hover, .nav__link--active { color: var(--beige); }
+.nav__cta {
+  font-size: 0.5625rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--onix); background: var(--beige);
+  padding: 10px 22px; border-radius: var(--radius-md);
+  transition: background var(--ease-out), transform 0.15s;
+}
+.nav__cta:hover { background: var(--beige-200); transform: translateY(-1px); }
+.nav__hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+@media (max-width: 900px) { .nav__hamburger { display: flex; } }
+.nav__hamburger span { display: block; width: 22px; height: 1.5px; background: var(--beige); }
+
+/* ═══════════════════════════════════════════════════════════
+   BREADCRUMB
+═══════════════════════════════════════════════════════════ */
+.breadcrumb {
+  background: var(--onix-700);
+  padding: 10px 0;
+  margin-top: var(--nav-h);
+}
+.breadcrumb__inner {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-ui); font-size: 0.625rem;
+  color: var(--beige-400); letter-spacing: 0.05em;
+}
+.breadcrumb__link { transition: color var(--ease-out); }
+.breadcrumb__link:hover { color: var(--beige); }
+.breadcrumb__sep { color: var(--onix-500); }
+.breadcrumb__current { color: var(--beige-300); }
+
+/* ═══════════════════════════════════════════════════════════
+   GALLERY HERO — Sanders pattern
+═══════════════════════════════════════════════════════════ */
+.gallery {
+  background: var(--onix);
+  position: relative;
+}
+.gallery__grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  grid-template-rows: 260px 260px;
+  gap: 3px;
+}
+@media (max-width: 900px) {
+  .gallery__grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 280px 180px;
+  }
+}
+@media (max-width: 560px) {
+  .gallery__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 300px;
+  }
+}
+.gallery-cell {
+  position: relative; overflow: hidden; cursor: pointer;
+  background: var(--onix-700);
+}
+.gallery-cell:first-child { grid-row: 1 / 3; }
+@media (max-width: 560px) {
+  .gallery-cell:not(:first-child) { display: none; }
+  .gallery-cell:first-child { grid-row: 1; }
+}
+.gallery-cell__img {
+  position: absolute; inset: 0;
+  transition: transform 0.9s var(--ease-out);
+}
+.gallery-cell:hover .gallery-cell__img { transform: scale(1.06); }
+
+/* Atmósferas por encuadre */
+.gc-main    { background: radial-gradient(ellipse at 50% 40%, #3A2A14 0%, transparent 55%), radial-gradient(ellipse at 20% 80%, #1A1208 0%, transparent 50%), linear-gradient(160deg, #2D2010 0%, #141414 100%); }
+.gc-hab     { background: radial-gradient(ellipse at 60% 30%, #2A1E0E 0%, transparent 60%), linear-gradient(180deg, #1C1408 0%, #141414 100%); }
+.gc-vista   { background: radial-gradient(ellipse at 40% 50%, #1E2E14 0%, transparent 55%), linear-gradient(200deg, #162010 0%, #0E140A 100%); }
+.gc-bano    { background: radial-gradient(ellipse at 50% 50%, #241C10 0%, transparent 60%), linear-gradient(160deg, #1C1410 0%, #141414 100%); }
+.gc-detalle { background: radial-gradient(ellipse at 40% 40%, #2A1E10 0%, transparent 55%), linear-gradient(140deg, #1E1808 0%, #141414 100%); }
+
+.gallery-cell__overlay {
+  position: absolute; inset: 0;
+  background: rgba(20,20,20,0.15);
+  transition: background var(--ease-out);
+}
+.gallery-cell:hover .gallery-cell__overlay { background: rgba(20,20,20,0.05); }
+.gallery-cell__label {
+  position: absolute; bottom: 10px; left: 12px;
+  font-family: var(--font-ui); font-size: 0.5rem;
+  font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(239,231,213,0.6);
+}
+
+.gallery__action {
+  position: absolute; bottom: var(--space-4); right: var(--space-4); z-index: 10;
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(20,20,20,0.75); backdrop-filter: blur(8px);
+  color: var(--beige-300); padding: 7px 14px; border-radius: 20px;
+  font-family: var(--font-ui); font-size: 0.5625rem;
+  font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  cursor: pointer; transition: background var(--ease-out), color var(--ease-out);
+  border: 1px solid rgba(239,231,213,0.15);
+}
+.gallery__action:hover { background: rgba(20,20,20,0.9); color: var(--beige); }
+
+/* ═══════════════════════════════════════════════════════════
+   HOTEL HEADER
+═══════════════════════════════════════════════════════════ */
+.hotel-header {
+  background: var(--beige-100);
+  padding: var(--space-6) 0 var(--space-4);
+  border-bottom: 1px solid var(--beige-300);
+}
+.hotel-header__inner {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: var(--space-5); flex-wrap: wrap;
+}
+.hotel-header__main { flex: 1; min-width: 0; }
+.hotel-header__region {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: var(--space-2);
+}
+.hotel-header__region-line { width: 20px; height: 1px; background: var(--onix-300); }
+.hotel-header__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 400; color: var(--onix);
+  line-height: 1.1; margin-bottom: var(--space-2);
+}
+.hotel-header__name em { font-style: italic; color: var(--onix-500); }
+.hotel-header__stars { display: flex; gap: 2px; margin-bottom: var(--space-3); }
+.star { font-size: 0.75rem; color: var(--warning); }
+.hotel-header__facts {
+  display: flex; gap: var(--space-5); flex-wrap: wrap;
+}
+.fact {
+  display: flex; align-items: center; gap: 5px;
+  font-family: var(--font-ui); font-size: 0.75rem; color: var(--onix-500);
+}
+.fact__dot { width: 3px; height: 3px; border-radius: 50%; background: var(--beige-400); flex-shrink: 0; }
+.hotel-header__scores { display: flex; gap: var(--space-4); align-items: center; }
+.score-pill {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 8px 14px; background: white; border: 1px solid var(--beige-300);
+  border-radius: var(--radius-md); min-width: 64px;
+}
+.score-pill__val {
+  font-family: var(--font-display); font-size: 1.25rem; font-weight: 500;
+  color: var(--onix); line-height: 1;
+}
+.score-pill__src { font-size: 0.4375rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--onix-300); margin-top: 3px; }
+
+/* ═══════════════════════════════════════════════════════════
+   TWO-COLUMN LAYOUT — Four Seasons pattern
+═══════════════════════════════════════════════════════════ */
+.hotel-body {
+  background: var(--beige-100);
+  padding: var(--space-7) 0 var(--space-9);
+}
+.hotel-body__grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: var(--space-7);
+  align-items: start;
+}
+@media (max-width: 1024px) {
+  .hotel-body__grid { grid-template-columns: 1fr; }
+  .hotel-sidebar { order: -1; }
+}
+
+/* ─── Content column ─── */
+.hotel-content {}
+
+.content-section {
+  padding-bottom: var(--space-7);
+  border-bottom: 1px solid var(--beige-300);
+  margin-bottom: var(--space-7);
+}
+.content-section:last-child { border-bottom: none; margin-bottom: 0; }
+
+.section-label {
+  font-family: var(--font-ui); font-size: 0.5rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--onix-300);
+  margin-bottom: var(--space-4);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 400; color: var(--onix);
+  line-height: 1.2; margin-bottom: var(--space-4);
+}
+.section-title em { font-style: italic; color: var(--onix-500); }
+
+/* Description */
+.hotel-desc { font-family: var(--font-ui); font-size: 0.9375rem; color: var(--onix-700); line-height: 1.85; }
+.hotel-desc + .hotel-desc { margin-top: var(--space-4); }
+
+/* Amenidades — brandbook icon set (trazo variable) */
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+@media (max-width: 600px) { .amenities-grid { grid-template-columns: 1fr 1fr; } }
+.amenity {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  background: white; border-radius: var(--radius-md);
+  border: 1px solid var(--beige-300);
+  font-family: var(--font-ui); font-size: 0.75rem; color: var(--onix-700);
+  transition: border-color var(--ease-out), background var(--ease-out);
+}
+.amenity:hover { border-color: var(--beige-400); background: var(--beige-200); }
+.amenity__icon { flex-shrink: 0; }
+.amenity__icon svg { display: block; }
+
+/* Habitaciones */
+.rooms-list { display: flex; flex-direction: column; gap: var(--space-4); }
+.room-card {
+  display: grid; grid-template-columns: 200px 1fr auto;
+  gap: var(--space-5); align-items: center;
+  background: white; border-radius: var(--radius-lg);
+  border: 1px solid var(--beige-300); overflow: hidden;
+  transition: box-shadow 0.4s var(--ease-out), transform 0.3s var(--ease-out);
+  position: relative;
+}
+.room-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.room-card--popular { border-color: var(--warning); }
+@media (max-width: 700px) {
+  .room-card { grid-template-columns: 1fr; }
+  .room-card__img { height: 180px; }
+  .room-card__cta-wrap { padding: var(--space-4); padding-top: 0; }
+}
+.room-card__popular-badge {
+  position: absolute; top: 10px; left: 10px; z-index: 2;
+  font-family: var(--font-ui); font-size: 0.4375rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: white; background: var(--warning);
+  padding: 3px 8px; border-radius: 20px;
+}
+.room-card__img-wrap { position: relative; overflow: hidden; height: 100%; min-height: 160px; }
+.room-card__img {
+  position: absolute; inset: 0;
+  transition: transform 0.8s var(--ease-out);
+}
+.room-card:hover .room-card__img { transform: scale(1.05); }
+
+.rimg-s { background: linear-gradient(150deg, #2A1E0E 0%, #141414 100%); }
+.rimg-d { background: linear-gradient(140deg, #1C2810 0%, #253019 100%); }
+.rimg-su { background: linear-gradient(155deg, #2E1E08 0%, #3D2C14 60%, #1A1208 100%); }
+
+.room-card__body { padding: var(--space-4) 0; }
+@media (max-width: 700px) { .room-card__body { padding: var(--space-4); padding-bottom: 0; } }
+.room-card__type {
+  font-family: var(--font-ui); font-size: 0.5rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--onix-300);
+  margin-bottom: 4px;
+}
+.room-card__name {
+  font-family: var(--font-display); font-size: 1.4rem;
+  font-weight: 400; color: var(--onix); margin-bottom: 3px;
+}
+.room-card__specs { font-size: 0.75rem; color: var(--onix-500); margin-bottom: var(--space-3); }
+.room-card__tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.room-tag {
+  font-size: 0.5625rem; font-family: var(--font-ui); font-weight: 500;
+  color: var(--onix-700); background: var(--beige-200);
+  padding: 2px 7px; border-radius: 20px;
+}
+.room-card__cta-wrap { padding: var(--space-4); text-align: center; }
+.room-card__price-direct {
+  font-family: var(--font-ui); font-size: 1.4rem;
+  font-weight: 700; color: var(--onix); line-height: 1;
+}
+.room-card__price-sub { font-size: 0.5rem; color: var(--success); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+.room-card__price-ota { font-size: 0.5625rem; color: var(--onix-300); text-decoration: line-through; margin-top: 1px; }
+.room-card__btn {
+  display: block; width: 100%; margin-top: 10px;
+  padding: 10px 16px; background: var(--onix); color: var(--beige);
+  border-radius: var(--radius-md); font-family: var(--font-ui);
+  font-size: 0.5rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; text-align: center;
+  transition: background var(--ease-out);
+}
+.room-card__btn:hover { background: var(--onix-700); }
+.room-card__scarcity {
+  font-size: 0.5rem; color: var(--onix-300);
+  display: flex; align-items: center; gap: 3px; justify-content: center;
+  margin-top: 6px; font-family: var(--font-ui);
+}
+
+/* Micro-stories — Sanders */
+.microstories { display: flex; flex-direction: column; gap: var(--space-4); }
+.micro {
+  display: flex; gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: white; border-radius: var(--radius-lg);
+  border: 1px solid var(--beige-300);
+  transition: border-color var(--ease-out);
+}
+.micro:hover { border-color: var(--beige-400); }
+.micro__icon-wrap {
+  width: 44px; height: 44px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--beige-200); border-radius: 50%;
+}
+.micro__content {}
+.micro__title {
+  font-family: var(--font-display); font-size: 1rem;
+  color: var(--onix); margin-bottom: 3px;
+}
+.micro__text { font-family: var(--font-ui); font-size: 0.8125rem; color: var(--onix-500); line-height: 1.6; }
+
+/* Barrio / Cerca */
+.nearby-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+@media (max-width: 600px) { .nearby-grid { grid-template-columns: 1fr; } }
+.nearby-map {
+  grid-column: 1 / -1;
+  height: 180px; background: var(--beige-300);
+  border-radius: var(--radius-lg); overflow: hidden; position: relative;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--beige-300);
+}
+.nearby-map__label {
+  font-family: var(--font-display); font-size: 1.1rem; font-style: italic;
+  color: var(--onix-500);
+}
+.nearby-map::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 35% 45%, rgba(79,106,74,0.12) 0%, transparent 40%),
+    repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(196,184,156,0.3) 28px, rgba(196,184,156,0.3) 29px),
+    repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(196,184,156,0.3) 28px, rgba(196,184,156,0.3) 29px);
+}
+.nearby-poi {
+  padding: var(--space-3) var(--space-4);
+  background: white; border-radius: var(--radius-md);
+  border: 1px solid var(--beige-300);
+}
+.nearby-poi__name { font-family: var(--font-display); font-size: 0.9375rem; color: var(--onix); margin-bottom: 2px; }
+.nearby-poi__dist { font-family: var(--font-ui); font-size: 0.625rem; color: var(--onix-300); letter-spacing: 0.05em; }
+
+/* Testimonios hotel */
+.hotel-tests { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+@media (max-width: 600px) { .hotel-tests { grid-template-columns: 1fr; } }
+.htest-card {
+  padding: var(--space-5); background: white;
+  border-radius: var(--radius-lg); border: 1px solid var(--beige-300);
+  position: relative;
+}
+.htest-card::before {
+  content: '\201C';
+  position: absolute; top: var(--space-3); right: var(--space-4);
+  font-family: var(--font-display); font-size: 3rem; color: var(--beige-300); line-height: 1;
+}
+.htest-head { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3); }
+.htest-av {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--beige-400);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 0.9375rem; color: var(--onix); flex-shrink: 0;
+}
+.htest-name { font-size: 0.8125rem; font-weight: 600; color: var(--onix); font-family: var(--font-ui); }
+.htest-meta { font-size: 0.5625rem; color: var(--onix-300); font-family: var(--font-ui); }
+.htest-stars { color: var(--warning); font-size: 0.5rem; letter-spacing: 2px; margin-bottom: var(--space-2); }
+.htest-text { font-family: var(--font-display); font-size: 0.9375rem; font-style: italic; color: var(--onix-700); line-height: 1.65; }
+
+/* FAQ / Accordion */
+.faq-list { display: flex; flex-direction: column; }
+.faq-item { border-bottom: 1px solid var(--beige-300); }
+.faq-item:first-child { border-top: 1px solid var(--beige-300); }
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: var(--space-4) 0; cursor: pointer;
+  font-family: var(--font-display); font-size: 1.0625rem; color: var(--onix);
+  gap: var(--space-4); list-style: none; user-select: none;
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-icon {
+  flex-shrink: 0; width: 20px; height: 20px;
+  border-radius: 50%; background: var(--beige-300);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.875rem; color: var(--onix-500);
+  transition: transform 0.3s var(--ease-out), background var(--ease-out);
+}
+details[open] .faq-icon { transform: rotate(45deg); background: var(--onix); color: var(--beige); }
+.faq-a {
+  padding-bottom: var(--space-4);
+  font-family: var(--font-ui); font-size: 0.875rem;
+  color: var(--onix-500); line-height: 1.75;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SIDEBAR STICKY — Four Seasons pattern
+═══════════════════════════════════════════════════════════ */
+.hotel-sidebar { position: sticky; top: 88px; }
+.sidebar-card {
+  background: white; border-radius: var(--radius-xl);
+  border: 1px solid var(--beige-300);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+.sidebar-header {
+  background: var(--onix); padding: var(--space-5);
+}
+.sidebar-price-from { font-family: var(--font-ui); font-size: 0.4375rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--beige-400); margin-bottom: 4px; }
+.sidebar-price-val { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; color: var(--beige); line-height: 1; }
+.sidebar-price-noche { font-family: var(--font-ui); font-size: 0.625rem; color: var(--beige-400); }
+.sidebar-price-anchor { font-family: var(--font-ui); font-size: 0.5625rem; color: rgba(239,231,213,0.4); text-decoration: line-through; margin-top: 4px; }
+.sidebar-price-save {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-family: var(--font-ui); font-size: 0.4375rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--success); background: rgba(79,106,74,0.2);
+  padding: 3px 8px; border-radius: 20px; margin-top: 6px;
+}
+.sidebar-body { padding: var(--space-5); }
+.sidebar-field { margin-bottom: var(--space-3); }
+.sidebar-field label {
+  display: block; font-family: var(--font-ui);
+  font-size: 0.4375rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--onix-300); margin-bottom: 4px;
+}
+.sidebar-field input,
+.sidebar-field select {
+  width: 100%; height: 42px; padding: 0 12px;
+  background: var(--beige-100); border: 1px solid var(--beige-300);
+  border-radius: var(--radius-md); font-family: var(--font-ui);
+  font-size: 0.875rem; color: var(--onix); appearance: none;
+  transition: border-color var(--ease-out), box-shadow var(--ease-out);
+}
+.sidebar-field input:focus,
+.sidebar-field select:focus {
+  outline: none; border-color: var(--onix);
+  box-shadow: 0 0 0 3px rgba(20,20,20,0.07);
+}
+.sidebar-dates { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); }
+.sidebar-cta {
+  display: block; width: 100%; padding: 14px;
+  background: var(--onix); color: var(--beige);
+  border-radius: var(--radius-md); text-align: center;
+  font-family: var(--font-ui); font-size: 0.5625rem;
+  font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  transition: background var(--ease-out); margin-top: var(--space-4);
+}
+.sidebar-cta:hover { background: var(--onix-700); }
+.sidebar-breakdown {
+  margin-top: var(--space-4); padding-top: var(--space-4);
+  border-top: 1px solid var(--beige-300);
+}
+.sidebar-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 6px; font-family: var(--font-ui); font-size: 0.75rem; color: var(--onix-500);
+}
+.sidebar-row--total {
+  font-weight: 700; color: var(--onix); padding-top: 8px;
+  margin-top: 4px; border-top: 1px solid var(--beige-300);
+  font-size: 0.875rem; margin-bottom: 0;
+}
+.sidebar-trust {
+  padding: var(--space-4) var(--space-5);
+  background: var(--beige-100); border-top: 1px solid var(--beige-300);
+}
+.sidebar-trust-item {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-ui); font-size: 0.625rem; color: var(--success);
+  margin-bottom: 5px;
+}
+.sidebar-trust-item:last-child { margin-bottom: 0; }
+.sidebar-whatsapp {
+  display: flex; align-items: center; gap: 10px;
+  padding: var(--space-4) var(--space-5); background: white;
+  border-top: 1px solid var(--beige-300);
+  font-family: var(--font-ui); font-size: 0.6875rem;
+  color: var(--success); cursor: pointer;
+  transition: background var(--ease-out);
+}
+.sidebar-whatsapp:hover { background: var(--success-bg); }
+.sidebar-whatsapp__title { font-weight: 600; }
+.sidebar-whatsapp__sub { font-size: 0.5625rem; color: var(--onix-300); }
+
+/* Tabs dentro del sidebar */
+.sidebar-tabs {
+  display: flex; border-bottom: 1px solid var(--beige-300);
+  background: var(--beige-100); gap: 0;
+}
+.sidebar-tab {
+  flex: 1; padding: 10px; text-align: center;
+  font-family: var(--font-ui); font-size: 0.5625rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--onix-300);
+  cursor: pointer; border-bottom: 2px solid transparent;
+  transition: color var(--ease-out), border-color var(--ease-out);
+}
+.sidebar-tab--active { color: var(--onix); border-bottom-color: var(--onix); }
+
+/* ═══════════════════════════════════════════════════════════
+   OTHER HOTELS — cross-sell
+═══════════════════════════════════════════════════════════ */
+.other-hotels { background: var(--onix); padding: var(--space-9) 0; }
+.other-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4); margin-top: var(--space-7);
+}
+@media (max-width: 768px) { .other-grid { grid-template-columns: 1fr; } }
+.other-card {
+  border-radius: var(--radius-lg); overflow: hidden;
+  position: relative; cursor: pointer; background: var(--onix-700);
+  aspect-ratio: 4/5;
+}
+.other-card__img {
+  position: absolute; inset: 0;
+  transition: transform 0.8s var(--ease-out);
+}
+.other-card:hover .other-card__img { transform: scale(1.05); }
+.other-img-lima { background: radial-gradient(ellipse at 60% 30%, #8B6914 0%, transparent 60%), linear-gradient(160deg, #2A1E10 0%, #141414 100%); }
+.other-img-mp   { background: radial-gradient(ellipse at 40% 40%, #1A2E10 0%, transparent 55%), linear-gradient(180deg, #0E1E08 0%, #141414 100%); }
+.other-img-tar  { background: radial-gradient(ellipse at 50% 40%, #2D4A1A 0%, transparent 60%), linear-gradient(200deg, #1A3010 0%, #141414 100%); }
+.other-card__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(20,20,20,0.88) 0%, rgba(20,20,20,0.1) 60%);
+}
+.other-card__content {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: var(--space-5);
+}
+.other-card__region {
+  font-family: var(--font-ui); font-size: 0.5rem; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--beige-400);
+  margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+}
+.other-card__region::before { content: ''; width: 14px; height: 1px; background: var(--beige-400); }
+.other-card__name {
+  font-family: var(--font-display); font-size: 1.3rem;
+  font-weight: 400; color: var(--beige); margin-bottom: 3px;
+}
+.other-card__from { font-family: var(--font-ui); font-size: 0.625rem; color: var(--beige-400); }
+.other-card__arrow {
+  position: absolute; top: var(--space-4); right: var(--space-4);
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(239,231,213,0.1); border: 1px solid rgba(239,231,213,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--beige-400); font-size: 0.75rem;
+  opacity: 0; transform: scale(0.8);
+  transition: opacity var(--ease-out), transform var(--ease-out);
+}
+.other-card:hover .other-card__arrow { opacity: 1; transform: scale(1); }
+.other-card a { position: absolute; inset: 0; z-index: 5; }
+
+/* ═══════════════════════════════════════════════════════════
+   FOOTER — idéntico al homepage (Sanders pattern)
+═══════════════════════════════════════════════════════════ */
+.footer { background: var(--onix); position: relative; overflow: hidden; }
+.footer__emotional {
+  position: relative; min-height: 260px;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: var(--space-9) 0;
+}
+.footer__emotional-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 60%, #2A1E10 0%, transparent 70%),
+              linear-gradient(180deg, var(--onix) 0%, #1C1208 100%);
+}
+.footer__emotional-content { position: relative; z-index: 1; }
+.footer__sign {
+  font-family: var(--font-display); font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-weight: 300; color: var(--beige); font-style: italic;
+  letter-spacing: -0.02em; margin-bottom: var(--space-2);
+}
+.footer__sign-sub {
+  font-family: var(--font-ui); font-size: 0.5625rem; font-weight: 600;
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--beige-400);
+}
+.footer__links { padding: var(--space-7) 0; border-top: 1px solid var(--onix-700); }
+.footer__links-inner {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-6);
+}
+@media (max-width: 768px) { .footer__links-inner { grid-template-columns: 1fr 1fr; gap: var(--space-5); } }
+.footer-col__logo {
+  font-family: var(--font-ui); font-size: 0.5625rem; font-weight: 600;
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--beige);
+  margin-bottom: var(--space-3);
+}
+.footer-col__desc {
+  font-family: var(--font-ui); font-size: 0.75rem;
+  color: var(--beige-400); line-height: 1.7; max-width: 280px;
+}
+.footer-col__heading {
+  font-family: var(--font-ui); font-size: 0.4375rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--onix-500);
+  margin-bottom: var(--space-4);
+}
+.footer-col__list { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+.footer-col__link {
+  font-family: var(--font-ui); font-size: 0.75rem;
+  color: var(--beige-400); transition: color var(--ease-out);
+}
+.footer-col__link:hover { color: var(--beige); }
+.footer__bottom {
+  padding: var(--space-4) 0; border-top: 1px solid var(--onix-700);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: var(--space-3);
+}
+.footer__copy { font-family: var(--font-ui); font-size: 0.5625rem; color: var(--onix-500); }
+.footer__legal { display: flex; gap: var(--space-4); }
+.footer__legal a {
+  font-family: var(--font-ui); font-size: 0.5625rem;
+  color: var(--onix-500); transition: color var(--ease-out);
+}
+.footer__legal a:hover { color: var(--beige-400); }
+
+/* WhatsApp FAB */
+.whatsapp-fab {
+  position: fixed; bottom: 28px; right: 24px; z-index: 200;
+  display: flex; align-items: center; gap: 10px;
+  background: #25D366; color: white;
+  padding: 12px 18px; border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  font-family: var(--font-ui); font-size: 0.6875rem; font-weight: 600;
+  cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.whatsapp-fab:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+@media (max-width: 560px) { .whatsapp-fab span { display: none; } .whatsapp-fab { padding: 14px; border-radius: 50%; } }
+
+/* Mobile book CTA */
+.mobile-book-cta {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 150;
+  background: var(--onix); padding: 14px var(--space-4);
+  display: none; align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--onix-700);
+  box-shadow: 0 -8px 32px rgba(20,20,20,0.3);
+}
+@media (max-width: 1024px) { .mobile-book-cta { display: flex; } }
+.mobile-price-val { font-family: var(--font-ui); font-size: 1.1rem; font-weight: 700; color: var(--beige); }
+.mobile-price-sub { font-size: 0.5rem; color: var(--beige-400); font-family: var(--font-ui); }
+.mobile-book-cta__btn {
+  background: var(--beige); color: var(--onix);
+  border-radius: var(--radius-md); padding: 12px 22px;
+  font-family: var(--font-ui); font-size: 0.5625rem;
+  font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════ NAV — idéntico al homepage ════════════ -->
+<nav class="nav" role="navigation" aria-label="Navegación principal">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Hoteles Ferré — inicio">
+        <svg class="nav__logo-mark" viewBox="0 0 32 38" fill="none" aria-hidden="true">
+          <path d="M16 4 C10 8 6 14 8 20 C9 24 12 26 14 28 C11 30 8 33 9 36" stroke="#EFE7D5" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M20 2 C14 7 12 14 15 20 C17 24 20 26 22 29 C20 31 18 34 19 37" stroke="#EFE7D5" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
+        </svg>
+        <div class="nav__logo-text">Hoteles<br>Ferré</div>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html#destinos" class="nav__link nav__link--active">Destinos</a></li>
+        <li><a href="#habitaciones" class="nav__link">Habitaciones</a></li>
+        <li><a href="index.html#nosotros" class="nav__link">Nosotros</a></li>
+        <li><a href="#contacto" class="nav__link">Contacto</a></li>
+      </ul>
+      <a href="#reservar" class="nav__cta">Reservar</a>
+      <button class="nav__hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════ BREADCRUMB ════════════ -->
+<nav class="breadcrumb" aria-label="Ruta de navegación">
+  <div class="container">
+    <div class="breadcrumb__inner">
+      <a href="index.html" class="breadcrumb__link">Inicio</a>
+      <span class="breadcrumb__sep" aria-hidden="true">›</span>
+      <a href="index.html#destinos" class="breadcrumb__link">Destinos</a>
+      <span class="breadcrumb__sep" aria-hidden="true">›</span>
+      <a href="#" class="breadcrumb__link">Sierra</a>
+      <span class="breadcrumb__sep" aria-hidden="true">›</span>
+      <span class="breadcrumb__current" aria-current="page">Hoteles Ferré Cusco</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════ GALLERY — Sanders pattern ════════════ -->
+<section class="gallery" aria-label="Galería de fotos — Hoteles Ferré Cusco">
+  <div class="gallery__grid" role="list">
+    <div class="gallery-cell" role="listitem" aria-label="Lobby principal">
+      <div class="gallery-cell__img gc-main" aria-hidden="true"></div>
+      <div class="gallery-cell__overlay" aria-hidden="true"></div>
+      <span class="gallery-cell__label">Lobby</span>
+    </div>
+    <div class="gallery-cell" role="listitem" aria-label="Habitación Deluxe">
+      <div class="gallery-cell__img gc-hab" aria-hidden="true"></div>
+      <div class="gallery-cell__overlay" aria-hidden="true"></div>
+      <span class="gallery-cell__label">Habitación Deluxe</span>
+    </div>
+    <div class="gallery-cell" role="listitem" aria-label="Vista a los Andes">
+      <div class="gallery-cell__img gc-vista" aria-hidden="true"></div>
+      <div class="gallery-cell__overlay" aria-hidden="true"></div>
+      <span class="gallery-cell__label">Vista montaña</span>
+    </div>
+    <div class="gallery-cell" role="listitem" aria-label="Baño de suite">
+      <div class="gallery-cell__img gc-bano" aria-hidden="true"></div>
+      <div class="gallery-cell__overlay" aria-hidden="true"></div>
+      <span class="gallery-cell__label">Suite — baño</span>
+    </div>
+    <div class="gallery-cell" role="listitem" aria-label="Detalle de servicio">
+      <div class="gallery-cell__img gc-detalle" aria-hidden="true"></div>
+      <div class="gallery-cell__overlay" aria-hidden="true"></div>
+      <span class="gallery-cell__label">Detalle</span>
+    </div>
+  </div>
+  <button class="gallery__action" aria-label="Ver todas las fotos">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <rect x="1" y="1" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="8" y="1" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="1" y="8" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="8" y="8" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/>
+    </svg>
+    Ver las 28 fotos
+  </button>
+</section>
+
+<!-- ════════════ HOTEL HEADER ════════════ -->
+<header class="hotel-header" role="banner">
+  <div class="container">
+    <div class="hotel-header__inner">
+      <div class="hotel-header__main">
+        <div class="hotel-header__region reveal">
+          <div class="hotel-header__region-line" aria-hidden="true"></div>
+          <span class="eyebrow">Sierra · Cusco · Perú</span>
+        </div>
+        <h1 class="hotel-header__name reveal reveal-delay-1">
+          Hoteles Ferré<br><em>Cusco</em>
+        </h1>
+        <div class="hotel-header__stars reveal reveal-delay-2" role="img" aria-label="5 estrellas">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <span class="star">★</span><span class="star">★</span>
+        </div>
+        <div class="hotel-header__facts reveal reveal-delay-2">
+          <div class="fact">
+            <div class="fact__dot" aria-hidden="true"></div>
+            A 3 min de la Plaza de Armas
+          </div>
+          <div class="fact">
+            <div class="fact__dot" aria-hidden="true"></div>
+            Desayuno buffet incluido
+          </div>
+          <div class="fact">
+            <div class="fact__dot" aria-hidden="true"></div>
+            Cancelación gratuita 48h
+          </div>
+        </div>
+      </div>
+      <div class="hotel-header__scores reveal reveal-delay-3" role="list" aria-label="Calificaciones de este hotel">
+        <div class="score-pill" role="listitem">
+          <span class="score-pill__val" aria-label="4.8 de 5 en Google">4.8</span>
+          <span class="score-pill__src">Google</span>
+        </div>
+        <div class="score-pill" role="listitem">
+          <span class="score-pill__val" aria-label="9.2 de 10 en Booking">9.2</span>
+          <span class="score-pill__src">Booking</span>
+        </div>
+        <div class="score-pill" role="listitem">
+          <span class="score-pill__val" aria-label="4.9 de 5 en TripAdvisor">4.9</span>
+          <span class="score-pill__src">TripAdv.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════ BODY — 2 columnas ════════════ -->
+<main class="hotel-body" id="habitaciones">
+  <div class="container">
+    <div class="hotel-body__grid">
+
+      <!-- COLUMNA DE CONTENIDO -->
+      <div class="hotel-content">
+
+        <!-- Descripción editorial -->
+        <section class="content-section" aria-labelledby="desc-heading">
+          <p class="section-label reveal">Sobre este hotel</p>
+          <h2 class="section-title reveal reveal-delay-1" id="desc-heading">
+            El corazón del<br><em>Valle Sagrado</em>
+          </h2>
+          <p class="hotel-desc reveal reveal-delay-2">
+            Hoteles Ferré Cusco se asienta a tres minutos de la Plaza de Armas, donde la piedra inca convive con el barroco colonial y el cielo de los Andes se tiñe de colores imposibles al atardecer. Desde aquí, todo el Valle Sagrado —y Machu Picchu— está a su alcance.
+          </p>
+          <p class="hotel-desc reveal reveal-delay-3" style="margin-top:var(--space-4)">
+            Pero lo que distingue a este hotel no es su ubicación. Es la manera en que lo recibimos. Cada huésped es bienvenido por nombre, con un mate de coca andino y la presencia de un equipo que conoce cada rincón del Cusco que ninguna guía turística menciona.
+          </p>
+        </section>
+
+        <!-- Amenidades con SVG icons — brandbook trazo variable -->
+        <section class="content-section" aria-labelledby="amen-heading">
+          <p class="section-label reveal">Lo que incluye su estadía</p>
+          <h2 class="section-title reveal reveal-delay-1" id="amen-heading">Amenidades</h2>
+          <div class="amenities-grid reveal reveal-delay-2" role="list">
+
+            <div class="amenity" role="listitem">
+              <span class="amenity__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9C3 5.7 5.7 3 9 3s6 2.7 6 6-2.7 6-6 6S3 12.3 3 9z" stroke="#141414" stroke-width="1.4"/><path d="M9 5.5v3.8L11.2 11" stroke="#141414" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </span>
+              Desayuno buffet
+            </div>
+            <div class="amenity" role="listitem">
+              <span class="amenity__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 10.5c0-2.5 1.5-4.5 4-5.5l.5 3 2.5-1 .5 3 2.5-1 .5 3C10 13.5 8 15 6 15c-2.2 0-4-2-4-4.5z" stroke="#141414" stroke-width="1.4" stroke-linecap="round"/><path d="M7 2.5C8.5 2 11 3 13 5s2 5 1 6.5" stroke="#141414" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </span>
+              WiFi fibra óptica
+            </div>
+            <div class="amenity" role="listitem">
+              <span class="amenity__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2.5" y="6" width="13" height="9" rx="1.5" stroke="#141414" stroke-width="1.4"/><path d="M6 6V4.5a3 3 0 016 0V6" stroke="#141414" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </span>
+              Caja fuerte digital
+            </div>
+            <div class="amenity" role="listitem">
+              <span class="amenity__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C5.7 2 3 4.7 3 8c0 4.5 6 10 6 10s6-5.5 6-10c0-3.3-2.7-6-6-6z" stroke="#141414" stroke-width="1.4"/><circle cx="9" cy="8" r="2.2" stroke="#141414" stroke-width="1.4"/></svg>
+              </span>
+              Traslado aeropuerto
+            </div>
+            <div class="amenity" role="listitem">
+              <span class="amenity__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3L4 7v8h4v-4h2v4h4V7z" stroke="#141414" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              </span>
+              Concierge dedicado
+            </div>
+            <div class="amenity" role="listitem">
+              <span class="amenity__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.5 14.5S4 11 9 11s6.5 3.5 6.5 3.5" stroke="#141414" stroke-width="1.4" stroke-linecap="round"/><circle cx="9" cy="6" r="3" stroke="#141414" stroke-width="1.4"/></svg>
+              </span>
+              Bienvenida andina
+            </div>
+            <div class="amenity" role="listitem">
+              <span class="amenity__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="10" width="14" height="5" rx="1.5" stroke="#141414" stroke-width="1.4"/><path d="M5 10V6.5a4 4 0 018 0V10" stroke="#141414" stroke-width="1.4" stroke-linecap="round"/><path d="M6 14.5V16M12 14.5V16" stroke="#141414" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </span>
+              Room service 24h
+            </div>
+            <div class="amenity" role="listitem">
+              <span class="amenity__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 13c1-2 3-3 6-3s5 1 6 3" stroke="#141414" stroke-width="1.4" stroke-linecap="round"/><path d="M9 3C7 3 5.5 4.5 5.5 6.5S7 10 9 10s3.5-1.5 3.5-3.5S11 3 9 3z" stroke="#141414" stroke-width="1.4"/><path d="M13.5 5C14.5 5.5 15 6.5 15 7.5 15 9 13.5 10 12 10" stroke="#141414" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </span>
+              Amenities L'Occitane
+            </div>
+            <div class="amenity" role="listitem">
+              <span class="amenity__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="11" rx="1.5" stroke="#141414" stroke-width="1.4"/><path d="M6 16h6M9 14v2" stroke="#141414" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </span>
+              Smart TV 55&quot;
+            </div>
+          </div>
+        </section>
+
+        <!-- Habitaciones — price anchor Booking.com -->
+        <section class="content-section" id="habitaciones" aria-labelledby="rooms-heading">
+          <p class="section-label reveal">Reserva directa · precio garantizado</p>
+          <h2 class="section-title reveal reveal-delay-1" id="rooms-heading">Nuestras habitaciones</h2>
+          <div class="rooms-list" role="list">
+
+            <!-- Superior -->
+            <article class="room-card reveal" role="listitem">
+              <div class="room-card__img-wrap">
+                <div class="room-card__img rimg-s" aria-hidden="true"></div>
+              </div>
+              <div class="room-card__body">
+                <p class="room-card__type">Cusco · Vista ciudad</p>
+                <h3 class="room-card__name">Superior</h3>
+                <p class="room-card__specs">28m² · Cama King · 2ª planta</p>
+                <div class="room-card__tags">
+                  <span class="room-tag">Desayuno</span>
+                  <span class="room-tag">WiFi</span>
+                  <span class="room-tag">Smart TV</span>
+                  <span class="room-tag">Room service</span>
+                </div>
+              </div>
+              <div class="room-card__cta-wrap">
+                <div class="room-card__price-direct">S/ 380</div>
+                <p class="room-card__price-sub">directo · mejor precio</p>
+                <p class="room-card__price-ota">S/ 460 en Booking</p>
+                <a href="#reservar" class="room-card__btn" aria-label="Reservar habitación Superior en Cusco">Reservar</a>
+              </div>
+            </article>
+
+            <!-- Deluxe — popular -->
+            <article class="room-card room-card--popular reveal reveal-delay-1" role="listitem">
+              <div class="room-card__popular-badge" aria-label="Habitación más popular">Más popular</div>
+              <div class="room-card__img-wrap">
+                <div class="room-card__img rimg-d" aria-hidden="true"></div>
+              </div>
+              <div class="room-card__body">
+                <p class="room-card__type">Cusco · Vista montaña</p>
+                <h3 class="room-card__name">Deluxe</h3>
+                <p class="room-card__specs">35m² · Cama King · Balcón privado</p>
+                <div class="room-card__tags">
+                  <span class="room-tag">Desayuno</span>
+                  <span class="room-tag">Balcón</span>
+                  <span class="room-tag">Minibar curado</span>
+                  <span class="room-tag">Vista Andes</span>
+                </div>
+              </div>
+              <div class="room-card__cta-wrap">
+                <div class="room-card__price-direct">S/ 520</div>
+                <p class="room-card__price-sub">directo · mejor precio</p>
+                <p class="room-card__price-ota">S/ 630 en Booking</p>
+                <a href="#reservar" class="room-card__btn" aria-label="Reservar habitación Deluxe en Cusco">Reservar</a>
+                <p class="room-card__scarcity">
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><circle cx="5" cy="5" r="4" stroke="currentColor" stroke-width="1"/><path d="M5 3v2.5L6.5 7" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+                  3 disponibles esta semana
+                </p>
+              </div>
+            </article>
+
+            <!-- Suite -->
+            <article class="room-card reveal reveal-delay-2" role="listitem">
+              <div class="room-card__img-wrap">
+                <div class="room-card__img rimg-su" aria-hidden="true"></div>
+              </div>
+              <div class="room-card__body">
+                <p class="room-card__type">Cusco · Suite premium</p>
+                <h3 class="room-card__name">Suite Ferré</h3>
+                <p class="room-card__specs">52m² · King · Sala privada · Jacuzzi</p>
+                <div class="room-card__tags">
+                  <span class="room-tag">Desayuno gourmet</span>
+                  <span class="room-tag">Jacuzzi</span>
+                  <span class="room-tag">Concierge</span>
+                  <span class="room-tag">Traslado</span>
+                </div>
+              </div>
+              <div class="room-card__cta-wrap">
+                <div class="room-card__price-direct">S/ 890</div>
+                <p class="room-card__price-sub">directo · mejor precio</p>
+                <p class="room-card__price-ota">S/ 1,090 en Booking</p>
+                <a href="#reservar" class="room-card__btn" aria-label="Reservar Suite Ferré en Cusco">Reservar</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Detalles que importan — Sanders micro-stories -->
+        <section class="content-section" aria-labelledby="micro-heading">
+          <p class="section-label reveal">La diferencia está en los detalles</p>
+          <h2 class="section-title reveal reveal-delay-1" id="micro-heading">
+            Lo que <em>nadie más hace</em>
+          </h2>
+          <div class="microstories reveal reveal-delay-2" role="list">
+            <article class="micro" role="listitem">
+              <div class="micro__icon-wrap" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 12c0-4 2.5-7 6-8 3.5 1 6 4 6 8s-2.7 6-6 6c-3.3 0-6-2-6-6z" stroke="#141414" stroke-width="1.4"/><path d="M8 12c.5-2 1.5-3.5 2-4.5M10 12c.5-2 1-3.5 2.5-5" stroke="#141414" stroke-width="1.2" stroke-linecap="round"/></svg>
+              </div>
+              <div class="micro__content">
+                <h3 class="micro__title">Mate de coca al llegar</h3>
+                <p class="micro__text">No como protocolo — como bienvenida real. Una infusión local que le ayuda a aclimatarse a los 3,400 m.s.n.m. de Cusco desde el primer instante.</p>
+              </div>
+            </article>
+            <article class="micro" role="listitem">
+              <div class="micro__icon-wrap" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C5.6 2 2 5.6 2 10s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z" stroke="#141414" stroke-width="1.4"/><path d="M6 13s1-3 4-3 4 3 4 3" stroke="#141414" stroke-width="1.4" stroke-linecap="round"/><circle cx="8" cy="8.5" r="1.2" fill="#141414"/><circle cx="12" cy="8.5" r="1.2" fill="#141414"/></svg>
+              </div>
+              <div class="micro__content">
+                <h3 class="micro__title">Lo recibimos por su nombre</h3>
+                <p class="micro__text">Antes de su llegada, coordinamos cada detalle. Cuando entra por nuestra puerta, ya le conocemos — no en el sentido burocrático, sino de verdad.</p>
+              </div>
+            </article>
+            <article class="micro" role="listitem">
+              <div class="micro__icon-wrap" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C6.7 2 4 4.7 4 8c0 5 6 10 6 10s6-5 6-10c0-3.3-2.7-6-6-6z" stroke="#141414" stroke-width="1.4"/><circle cx="10" cy="8" r="2.5" stroke="#141414" stroke-width="1.4"/></svg>
+              </div>
+              <div class="micro__content">
+                <h3 class="micro__title">Machu Picchu sin sorpresas</h3>
+                <p class="micro__text">Nuestro concierge coordina trenes, entradas y guías. Sin colas, sin incertidumbre, sin que usted tenga que hacer nada más que disfrutar.</p>
+              </div>
+            </article>
+            <article class="micro" role="listitem">
+              <div class="micro__icon-wrap" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#141414" stroke-width="1.4"/><path d="M10 7v4l2.5 2.5" stroke="#141414" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </div>
+              <div class="micro__content">
+                <h3 class="micro__title">Chocolate artesanal cada tarde</h3>
+                <p class="micro__text">Cacao del Valle del Colca, elaborado por chocolateros cusqueños. Un pequeño ritual que marca la diferencia entre alojarse y pertenecer.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Cerca del hotel -->
+        <section class="content-section" aria-labelledby="cerca-heading">
+          <p class="section-label reveal">Dónde estamos</p>
+          <h2 class="section-title reveal reveal-delay-1" id="cerca-heading">
+            Cusco al alcance<br><em>de su puerta</em>
+          </h2>
+          <div class="nearby-grid reveal reveal-delay-2">
+            <div class="nearby-map" role="img" aria-label="Mapa de ubicación — Hoteles Ferré Cusco, a 3 minutos de la Plaza de Armas">
+              <span class="nearby-map__label">Av. El Sol, Cusco</span>
+            </div>
+            <div class="nearby-poi">
+              <h3 class="nearby-poi__name">Plaza de Armas</h3>
+              <p class="nearby-poi__dist">3 min a pie · 300m</p>
+            </div>
+            <div class="nearby-poi">
+              <h3 class="nearby-poi__name">Templo de Qorikancha</h3>
+              <p class="nearby-poi__dist">8 min a pie · 700m</p>
+            </div>
+            <div class="nearby-poi">
+              <h3 class="nearby-poi__name">Mercado San Pedro</h3>
+              <p class="nearby-poi__dist">10 min a pie · 900m</p>
+            </div>
+            <div class="nearby-poi">
+              <h3 class="nearby-poi__name">Sacsayhuamán</h3>
+              <p class="nearby-poi__dist">25 min en auto · 3km</p>
+            </div>
+            <div class="nearby-poi">
+              <h3 class="nearby-poi__name">Aeropuerto Alejandro Velasco</h3>
+              <p class="nearby-poi__dist">20 min en auto · transfer disponible</p>
+            </div>
+            <div class="nearby-poi">
+              <h3 class="nearby-poi__name">Estación Poroy (trenes a Machu Picchu)</h3>
+              <p class="nearby-poi__dist">15 min en auto · le coordinamos el traslado</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Testimonios de este hotel -->
+        <section class="content-section" aria-labelledby="reviews-heading">
+          <p class="section-label reveal">Huéspedes de Ferré Cusco</p>
+          <h2 class="section-title reveal reveal-delay-1" id="reviews-heading">
+            Lo que dicen<br><em>quienes ya estuvieron</em>
+          </h2>
+          <div class="hotel-tests reveal reveal-delay-2" role="list">
+            <article class="htest-card" role="listitem">
+              <div class="htest-head">
+                <div class="htest-av" aria-hidden="true">AL</div>
+                <div>
+                  <p class="htest-name">Ana L.</p>
+                  <p class="htest-meta">Buenos Aires · Junio 2026</p>
+                </div>
+              </div>
+              <div class="htest-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+              <blockquote class="htest-text">"El mate de coca al llegar fue el detalle perfecto. Y cuando les pedimos consejo para Machu Picchu, lo organizaron todo en menos de una hora. Nunca me sentí una turista más."</blockquote>
+            </article>
+            <article class="htest-card" role="listitem">
+              <div class="htest-head">
+                <div class="htest-av" aria-hidden="true">JM</div>
+                <div>
+                  <p class="htest-name">Javier M.</p>
+                  <p class="htest-meta">Madrid · Febrero 2026</p>
+                </div>
+              </div>
+              <div class="htest-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+              <blockquote class="htest-text">"La vista desde el balcón de la habitación Deluxe al amanecer es algo que no tiene precio. Cusco con los Andes de fondo — nunca lo olvidaré."</blockquote>
+            </article>
+            <article class="htest-card" role="listitem">
+              <div class="htest-head">
+                <div class="htest-av" aria-hidden="true">CR</div>
+                <div>
+                  <p class="htest-name">Carolina R.</p>
+                  <p class="htest-meta">Ciudad de México · Abril 2026</p>
+                </div>
+              </div>
+              <div class="htest-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+              <blockquote class="htest-text">"La Suite Ferré es un nivel aparte. El jacuzzi privado después de Machu Picchu fue exactamente lo que necesitaba. El equipo es increíble — siempre presente, nunca invasivo."</blockquote>
+            </article>
+            <article class="htest-card" role="listitem">
+              <div class="htest-head">
+                <div class="htest-av" aria-hidden="true">PK</div>
+                <div>
+                  <p class="htest-name">Peter K.</p>
+                  <p class="htest-meta">Munich · Marzo 2026</p>
+                </div>
+              </div>
+              <div class="htest-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+              <blockquote class="htest-text">"Best hotel in Cusco, without a doubt. The personal service, the breakfast, the location — everything is perfect. We will definitely come back for Lima."</blockquote>
+            </article>
+          </div>
+        </section>
+
+        <!-- FAQ / Preguntas frecuentes -->
+        <section class="content-section" aria-labelledby="faq-heading">
+          <p class="section-label reveal">Resolvemos sus dudas</p>
+          <h2 class="section-title reveal reveal-delay-1" id="faq-heading">Preguntas frecuentes</h2>
+          <div class="faq-list reveal reveal-delay-2" role="list">
+
+            <details class="faq-item" role="listitem">
+              <summary class="faq-q">
+                ¿El desayuno buffet está incluido en todas las tarifas?
+                <div class="faq-icon" aria-hidden="true">+</div>
+              </summary>
+              <div class="faq-a">Sí. Todas nuestras tarifas de reserva directa incluyen desayuno buffet completo para dos personas. El desayuno se sirve de 6:30 a 10:00 en nuestro restaurante principal, con opciones frías, calientes, frutas locales, panes artesanales y la infusión andina del día.</div>
+            </details>
+
+            <details class="faq-item" role="listitem">
+              <summary class="faq-q">
+                ¿Pueden ayudarnos a organizar la visita a Machu Picchu?
+                <div class="faq-icon" aria-hidden="true">+</div>
+              </summary>
+              <div class="faq-a">Absolutamente. Nuestro concierge coordina toda la logística: train desde Poroy o Ollantaytambo, entradas a la ciudadela, guía local o autoguiado, regreso y transfer al hotel. Solo necesita indicarnos la fecha y cuántas personas son. Le respondemos en menos de 2 horas con todas las opciones y precios.</div>
+            </details>
+
+            <details class="faq-item" role="listitem">
+              <summary class="faq-q">
+                ¿Qué pasa si necesito cancelar mi reserva?
+                <div class="faq-icon" aria-hidden="true">+</div>
+              </summary>
+              <div class="faq-a">Las reservas directas incluyen cancelación gratuita hasta 48 horas antes de la fecha de llegada, sin cargos ni penalidades. Para cancelaciones con menos de 48 horas de anticipación, se aplica un cargo de una noche de alojamiento. Le recomendamos contactarnos directamente para cualquier modificación — siempre buscamos la mejor solución.</div>
+            </details>
+
+            <details class="faq-item" role="listitem">
+              <summary class="faq-q">
+                ¿Ofrecen traslado desde el aeropuerto de Cusco?
+                <div class="faq-icon" aria-hidden="true">+</div>
+              </summary>
+              <div class="faq-a">Sí. Ofrecemos servicio de transfer privado desde y hacia el Aeropuerto Alejandro Velasco Astete. El trayecto tarda aproximadamente 20 minutos. Puede solicitarlo al momento de reservar o contactarnos directamente por WhatsApp con 24 horas de anticipación. El costo es de S/ 35 por trayecto (hasta 4 pasajeros).</div>
+            </details>
+
+            <details class="faq-item" role="listitem">
+              <summary class="faq-q">
+                ¿Cuáles son los horarios de check-in y check-out?
+                <div class="faq-icon" aria-hidden="true">+</div>
+              </summary>
+              <div class="faq-a">El check-in estándar es a partir de las 14:00 y el check-out hasta las 12:00. Para llegadas tempranas o salidas tardías, consultamos disponibilidad sin costo adicional. Si su vuelo llega de madrugada, puede dejar su equipaje con nosotros y le informaremos en cuanto su habitación esté lista.</div>
+            </details>
+
+          </div>
+        </section>
+
+      </div><!-- fin hotel-content -->
+
+      <!-- SIDEBAR STICKY — Four Seasons pattern -->
+      <aside class="hotel-sidebar" aria-label="Reservar en Hoteles Ferré Cusco">
+        <div class="sidebar-card" role="complementary">
+
+          <div class="sidebar-header">
+            <p class="sidebar-price-from">Desde</p>
+            <div style="display:flex; align-items:baseline; gap:6px;">
+              <span class="sidebar-price-val">S/ 380</span>
+              <span class="sidebar-price-noche">/ noche</span>
+            </div>
+            <p class="sidebar-price-anchor">S/ 460 en Booking.com</p>
+            <div class="sidebar-price-save">
+              <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true"><path d="M2 4L3.5 5.5L6 2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Ahorras hasta S/ 200 reservando directo
+            </div>
+          </div>
+
+          <div class="sidebar-tabs" role="tablist">
+            <button class="sidebar-tab sidebar-tab--active" role="tab" aria-selected="true">Habitación</button>
+            <button class="sidebar-tab" role="tab" aria-selected="false">Paquetes</button>
+          </div>
+
+          <div class="sidebar-body" id="reservar">
+            <div class="sidebar-field">
+              <label for="sb-room">Tipo de habitación</label>
+              <select id="sb-room" aria-label="Seleccionar tipo de habitación">
+                <option value="superior">Superior — S/ 380/noche</option>
+                <option value="deluxe" selected>Deluxe — S/ 520/noche</option>
+                <option value="suite">Suite Ferré — S/ 890/noche</option>
+              </select>
+            </div>
+            <div class="sidebar-dates">
+              <div class="sidebar-field">
+                <label for="sb-in">Llegada</label>
+                <input type="date" id="sb-in" aria-label="Fecha de llegada">
+              </div>
+              <div class="sidebar-field">
+                <label for="sb-out">Salida</label>
+                <input type="date" id="sb-out" aria-label="Fecha de salida">
+              </div>
+            </div>
+            <div class="sidebar-field">
+              <label for="sb-guests">Huéspedes</label>
+              <select id="sb-guests" aria-label="Número de huéspedes">
+                <option value="1">1 persona</option>
+                <option value="2" selected>2 personas</option>
+                <option value="3">3 personas</option>
+                <option value="4">4 personas</option>
+              </select>
+            </div>
+
+            <div class="sidebar-breakdown" aria-live="polite">
+              <div class="sidebar-row"><span>2 noches × S/ 520</span><span>S/ 1,040</span></div>
+              <div class="sidebar-row"><span>Desayuno buffet (incl.)</span><span style="color:var(--success)">S/ 0</span></div>
+              <div class="sidebar-row"><span>Impuestos IGV 18%</span><span>S/ 187</span></div>
+              <div class="sidebar-row sidebar-row--total"><span>Total estimado</span><span>S/ 1,227</span></div>
+            </div>
+
+            <a href="#" class="sidebar-cta" aria-label="Verificar disponibilidad y reservar">
+              Verificar disponibilidad
+            </a>
+          </div>
+
+          <div class="sidebar-trust" role="list">
+            <div class="sidebar-trust-item" role="listitem">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6L4.5 8.5L10 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Cancelación gratuita hasta 48h antes
+            </div>
+            <div class="sidebar-trust-item" role="listitem">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6L4.5 8.5L10 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Precio más bajo · garantizado directo
+            </div>
+            <div class="sidebar-trust-item" role="listitem">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6L4.5 8.5L10 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Desayuno buffet incluido en todas las tarifas
+            </div>
+            <div class="sidebar-trust-item" role="listitem">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6L4.5 8.5L10 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Pago seguro · SSL 256-bit
+            </div>
+          </div>
+
+          <div class="sidebar-whatsapp" role="button" aria-label="Contactar por WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <div>
+              <p class="sidebar-whatsapp__title">¿Dudas? Escríbenos</p>
+              <p class="sidebar-whatsapp__sub">Respondemos en menos de 1h · +51 924 594 335</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div><!-- fin hotel-body__grid -->
+  </div>
+</main>
+
+<!-- ════════════ OTROS HOTELES — cross-sell ════════════ -->
+<section class="other-hotels" aria-labelledby="otros-heading">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:var(--space-4)">
+      <p class="eyebrow eyebrow--light reveal">Toda la cadena Ferré</p>
+      <h2 class="reveal reveal-delay-1" id="otros-heading" style="font-family:var(--font-display); font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--beige); margin-top:var(--space-2);">
+        Descubra más destinos
+      </h2>
+      <p class="reveal reveal-delay-2" style="font-family:var(--font-ui); font-size:0.875rem; color:var(--beige-400); margin-top:var(--space-3); max-width:400px; margin-left:auto; margin-right:auto; line-height:1.7;">
+        Misma elegancia, mismo cuidado. Diferente paisaje, diferente historia.
+      </p>
+    </div>
+    <div class="other-grid reveal reveal-delay-2" role="list">
+      <article class="other-card" role="listitem">
+        <div class="other-card__img other-img-lima" aria-hidden="true"></div>
+        <div class="other-card__overlay" aria-hidden="true"></div>
+        <div class="other-card__content">
+          <p class="other-card__region">Costa</p>
+          <h3 class="other-card__name">Lima · Miraflores</h3>
+          <p class="other-card__from">Desde S/ 280 / noche</p>
+        </div>
+        <div class="other-card__arrow" aria-hidden="true">→</div>
+        <a href="#" aria-label="Ver Hoteles Ferré Lima Miraflores"></a>
+      </article>
+      <article class="other-card" role="listitem">
+        <div class="other-card__img other-img-mp" aria-hidden="true"></div>
+        <div class="other-card__overlay" aria-hidden="true"></div>
+        <div class="other-card__content">
+          <p class="other-card__region">Sierra</p>
+          <h3 class="other-card__name">Machu Picchu</h3>
+          <p class="other-card__from">Desde S/ 620 / noche</p>
+        </div>
+        <div class="other-card__arrow" aria-hidden="true">→</div>
+        <a href="#" aria-label="Ver Hoteles Ferré Machu Picchu"></a>
+      </article>
+      <article class="other-card" role="listitem">
+        <div class="other-card__img other-img-tar" aria-hidden="true"></div>
+        <div class="other-card__overlay" aria-hidden="true"></div>
+        <div class="other-card__content">
+          <p class="other-card__region">Selva</p>
+          <h3 class="other-card__name">Tarapoto</h3>
+          <p class="other-card__from">Desde S/ 310 / noche</p>
+        </div>
+        <div class="other-card__arrow" aria-hidden="true">→</div>
+        <a href="#" aria-label="Ver Hoteles Ferré Tarapoto"></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FOOTER — idéntico al homepage ════════════ -->
+<footer class="footer" id="contacto" role="contentinfo">
+  <div class="footer__emotional" aria-hidden="true">
+    <div class="footer__emotional-bg"></div>
+    <div class="footer__emotional-content">
+      <p class="footer__sign">«Lo esperamos.»</p>
+      <p class="footer__sign-sub">Hoteles Ferré Cusco · Sierra del Perú</p>
+    </div>
+  </div>
+  <div class="footer__links">
+    <div class="container">
+      <div class="footer__links-inner">
+        <div>
+          <p class="footer-col__logo">Hoteles Ferré</p>
+          <p class="footer-col__desc">Desde la costa hasta la sierra y la selva, conectamos el Perú a través de experiencias honestas, sofisticadas y humanas.</p>
+          <div style="margin-top:var(--space-4); display:flex; gap:var(--space-3);">
+            <a href="#" style="color:var(--beige-400); font-size:0.75rem; font-family:var(--font-ui);">Instagram</a>
+            <a href="#" style="color:var(--beige-400); font-size:0.75rem; font-family:var(--font-ui);">Facebook</a>
+            <a href="#" style="color:var(--beige-400); font-size:0.75rem; font-family:var(--font-ui);">WhatsApp</a>
+          </div>
+        </div>
+        <nav aria-label="Destinos Ferré">
+          <p class="footer-col__heading">Destinos</p>
+          <ul class="footer-col__list" role="list">
+            <li><a href="#" class="footer-col__link">Lima · Miraflores</a></li>
+            <li><a class="footer-col__link" aria-current="page">Cusco ← aquí</a></li>
+            <li><a href="#" class="footer-col__link">Machu Picchu</a></li>
+            <li><a href="#" class="footer-col__link">Tarapoto · Selva</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Contacto">
+          <p class="footer-col__heading">Contacto</p>
+          <ul class="footer-col__list" role="list">
+            <li><a href="tel:+51924594335" class="footer-col__link">+51 924 594 335</a></li>
+            <li><a href="mailto:cusco@hotelesferre.com" class="footer-col__link">cusco@hotelesferre.com</a></li>
+            <li><a href="#" class="footer-col__link">Av. El Sol 312, Cusco</a></li>
+            <li><a href="#reservar" class="footer-col__link">Reservar directo →</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Legal">
+          <p class="footer-col__heading">Legal</p>
+          <ul class="footer-col__list" role="list">
+            <li><a href="#" class="footer-col__link">Libro de reclamaciones</a></li>
+            <li><a href="#" class="footer-col__link">Política de privacidad</a></li>
+            <li><a href="#" class="footer-col__link">Términos y condiciones</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="footer__links" style="padding-top:0;">
+    <div class="container">
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 Hoteles Ferré S.A.C. · RUC 20501234567 · Todos los derechos reservados</p>
+        <div class="footer__legal">
+          <a href="#">Aviso legal</a>
+          <a href="#">Privacidad</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/51924594335?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20en%20Ferr%C3%A9%20Cusco" class="whatsapp-fab" aria-label="Contactar por WhatsApp" target="_blank" rel="noopener noreferrer">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span>¿Dudas sobre Cusco?</span>
+</a>
+
+<!-- Mobile booking FAB -->
+<div class="mobile-book-cta" aria-label="Reservar en Ferré Cusco desde S/ 380">
+  <div>
+    <p class="mobile-price-val">Desde S/ 380</p>
+    <p class="mobile-price-sub">por noche · desayuno incluido</p>
+  </div>
+  <a href="#reservar" class="mobile-book-cta__btn">Reservar</a>
+</div>
+
+<script>
+/* ─── Scroll Reveal ─── */
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => obs.observe(el));
+
+/* ─── Date defaults ─── */
+const today = new Date();
+const d1 = new Date(today); d1.setDate(today.getDate() + 1);
+const d2 = new Date(today); d2.setDate(today.getDate() + 3);
+const fmt = d => d.toISOString().split('T')[0];
+document.getElementById('sb-in').value = fmt(d1);
+document.getElementById('sb-in').min = fmt(today);
+document.getElementById('sb-out').value = fmt(d2);
+document.getElementById('sb-out').min = fmt(d1);
+
+/* ─── Dynamic sidebar total ─── */
+const roomPrices = { superior: 380, deluxe: 520, suite: 890 };
+function updateBreakdown() {
+  const room = document.getElementById('sb-room').value;
+  const price = roomPrices[room] || 520;
+  const inDate = new Date(document.getElementById('sb-in').value);
+  const outDate = new Date(document.getElementById('sb-out').value);
+  const nights = Math.max(1, Math.round((outDate - inDate) / 86400000));
+  const sub = price * nights;
+  const tax = Math.round(sub * 0.18);
+  const total = sub + tax;
+  const bd = document.querySelector('.sidebar-breakdown');
+  if (bd) {
+    bd.innerHTML = `
+      <div class="sidebar-row"><span>${nights} noche${nights>1?'s':''} × S/ ${price}</span><span>S/ ${sub.toLocaleString('es-PE')}</span></div>
+      <div class="sidebar-row"><span>Desayuno buffet (incl.)</span><span style="color:var(--success)">S/ 0</span></div>
+      <div class="sidebar-row"><span>Impuestos IGV 18%</span><span>S/ ${tax.toLocaleString('es-PE')}</span></div>
+      <div class="sidebar-row sidebar-row--total"><span>Total estimado</span><span>S/ ${total.toLocaleString('es-PE')}</span></div>
+    `;
+  }
+}
+document.getElementById('sb-room').addEventListener('change', updateBreakdown);
+document.getElementById('sb-in').addEventListener('change', function() {
+  const minOut = new Date(this.value); minOut.setDate(minOut.getDate() + 1);
+  document.getElementById('sb-out').min = fmt(minOut);
+  if (document.getElementById('sb-out').value <= this.value) document.getElementById('sb-out').value = fmt(minOut);
+  updateBreakdown();
+});
+document.getElementById('sb-out').addEventListener('change', updateBreakdown);
+updateBreakdown();
+
+/* ─── Sidebar tabs ─── */
+document.querySelectorAll('.sidebar-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.sidebar-tab').forEach(t => { t.classList.remove('sidebar-tab--active'); t.setAttribute('aria-selected','false'); });
+    this.classList.add('sidebar-tab--active');
+    this.setAttribute('aria-selected','true');
+  });
+});
+
+/* ─── Smooth scroll ─── */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) { e.preventDefault(); window.scrollTo({ top: target.offsetTop - 88, behavior: 'smooth' }); }
+  });
+});
+
+/* ─── Reduced motion ─── */
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.reveal').forEach(el => { el.style.transition = 'none'; el.classList.add('visible'); });
+}
+</script>
+</body>
+</html>
